@@ -17,6 +17,14 @@ function playRound (playerChoice) {
             "You lose!" :
             playerChoice.toLowerCase() === 'rock' && computerChoice === 'scissors' ?
             "You win!" :
+            playerChoice.toLowerCase() === 'paper' && computerChoice === 'rock' ?
+            "You win!" :
+            playerChoice.toLowerCase() === 'paper' && computerChoice === 'scissors' ?
+            "You lose!" :
+            playerChoice.toLowerCase() === 'scissors' && computerChoice === 'rock' ?
+            "You lose!" :
+            playerChoice.toLowerCase() === 'scissors' && computerChoice === 'paper' ?
+            "You win!" :
             "error"
     }
 
