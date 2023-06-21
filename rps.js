@@ -5,13 +5,8 @@ function getComputerChoice() {
            'scissors'
     }
 
-// let playerChoice = prompt("Rock, paper, or scissors?")
-// let playerScore = 0
-// let computerScore = 0
-// let winner = ''
 
 function playGame (playerChoice) {
-    // let playerChoice = prompt("Rock, paper, or scissors?")
     let playerScore = 0
     let computerScore = 0
     let winner = ''
@@ -32,6 +27,23 @@ function playGame (playerChoice) {
                 console.log("You win!");
                 playerScore += 1;
                 break;
+            case playerChoice.toLowerCase() === 'paper' && computerChoice === 'scissors':
+                console.log("You lose!");
+                computerScore += 1;
+                break;
+            case playerChoice.toLowerCase() === 'paper' && computerChoice === 'rock':
+                console.log("You win!");
+                playerScore += 1;
+                break;
+            case playerChoice.toLowerCase() === 'scissors' && computerChoice === 'rock':
+                console.log("You lose!");
+                computerScore += 1;
+                break;
+            case playerChoice.toLowerCase() === 'scissors' && computerChoice === 'paper':
+                console.log("You win!");
+                playerScore += 1;
+                break;
+            
         }
     }
     if (playerScore > computerScore) {
