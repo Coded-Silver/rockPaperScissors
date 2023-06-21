@@ -5,7 +5,10 @@ function getComputerChoice() {
            'scissors'
     }
 
-let playerChoice = prompt("Rock, paper, or scissors?");
+let playerChoice = prompt("Rock, paper, or scissors?")
+let playerScore = 0
+let computerScore = 0
+let winner = ''
 
 function playRound (playerChoice) {
     let computerChoice = getComputerChoice()
@@ -28,5 +31,8 @@ function playRound (playerChoice) {
             "error"
     }
 
+function playGame (playerChoice) {
+
+}
 
 console.log(playRound(playerChoice))
