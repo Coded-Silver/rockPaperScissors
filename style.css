@@ -1,4 +1,8 @@
-.choiceBtn{
+.hide {
+    display: none;
+}
+
+.choiceBtn, .newGame{
     line-height: 30px;
     width: 150px;
 }
