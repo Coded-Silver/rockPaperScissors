@@ -1,81 +1,44 @@
-function getComputerChoice() {
-    let compChoice = Math.floor(Math.random() * 3)
-    return compChoice === 0 ? 'rock' :
-           compChoice === 1 ? 'paper' :
-           'scissors'
-    }
+const playerText = document.querySelector("#playerText");
+const computerText = document.querySelector("#computerText");
+const resultText = document.querySelector("#resultText");
+const choiceBtns = document.querySelectorAll(".choiceBtn");
+let player;
+let computer;
+let result;
+let score = 0;
 
+choiceBtns.forEach(button => button.addEventListener('click', () => { 
+    player = button.textContent;
+    computerTurn();
+    playerText.textContent = `Player: ${player}`;
+    computerText.textContent = `Computer: ${computer}`;
+    resultText.textContent = checkWinner();
+}));
 
-function playGame (playerChoice) {
-    let playerScore = 0
-    let computerScore = 0
-    let winner = ''
-    let computerChoice = getComputerChoice()
+function computerTurn() {
+    const randNum = Math.floor(Math.random() * 3) + 1;
 
-    for (let i = 0; i < 5; i++) {
-        let playerChoice = prompt("Rock, paper, or scissors?")
-
-        switch(playerChoice) {
-            case playerChoice === computerChoice:
-                console.log("It's a tie!");
-                break;
-            case playerChoice.toLowerCase() === 'rock' && computerChoice === 'paper':
-                console.log("You lose!");
-                computerScore += 1;
-                break;
-            case playerChoice.toLowerCase() === 'rock' && computerChoice === 'scissors':
-                console.log("You win!");
-                playerScore += 1;
-                break;
-            case playerChoice.toLowerCase() === 'paper' && computerChoice === 'scissors':
-                console.log("You lose!");
-                computerScore += 1;
-                break;
-            case playerChoice.toLowerCase() === 'paper' && computerChoice === 'rock':
-                console.log("You win!");
-                playerScore += 1;
-                break;
-            case playerChoice.toLowerCase() === 'scissors' && computerChoice === 'rock':
-                console.log("You lose!");
-                computerScore += 1;
-                break;
-            case playerChoice.toLowerCase() === 'scissors' && computerChoice === 'paper':
-                console.log("You win!");
-                playerScore += 1;
-                break;
-            
-        }
-    }
-    if (playerScore > computerScore) {
-        console.log("You won! Congrats!")
-    } else {
-        console.log("Oh no! You lost!")
+    switch(randNum) {
+        case 1:
+            computer = "ROCK";
+            break;
+        case 2:
+            computer = "PAPER";
+            break;
+        case 3:
+            computer = "SCISSORS";
+            break;
     }
 }
 
-playGame()
-
-// function playRound (playerChoice) {
-//     let computerChoice = getComputerChoice()
-//     console.log(computerChoice)
-
-//     return playerChoice.toLowerCase() === computerChoice ?
-//             "It's a tie!" :
-//             playerChoice.toLowerCase() === 'rock' && computerChoice === 'paper' ?
-//             "You lose!" :
-//             playerChoice.toLowerCase() === 'rock' && computerChoice === 'scissors' ?
-//             "You win!" :
-//             playerChoice.toLowerCase() === 'paper' && computerChoice === 'rock' ?
-//             "You win!" :
-//             playerChoice.toLowerCase() === 'paper' && computerChoice === 'scissors' ?
-//             "You lose!" :
-//             playerChoice.toLowerCase() === 'scissors' && computerChoice === 'rock' ?
-//             "You lose!" :
-//             playerChoice.toLowerCase() === 'scissors' && computerChoice === 'paper' ?
-//             "You win!" :
-//             "error"
-//     }
-
-
-
-// console.log(playRound(playerChoice))
+function checkWinner() {
+    if(player == computer) {
+        return "It's a tie!";
+    } else if (computer == "ROCK") {
+        return (player == "PAPER") ? "You win!" : "You lose!";
+    } else if (computer == "PAPER") {
+        return (player == "SCISSORS") ? "You win!" : "You lose!";
+    } else if (computer == "SCISSORS") {
+        return (player == "ROCK") ? "You win!" : "You lose!";
+    }
+}
